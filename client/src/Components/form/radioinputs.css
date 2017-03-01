@@ -1,0 +1,7 @@
+.flexrow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 1.5em;
+  font-size: 1.25em;
+}

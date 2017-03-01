@@ -1,0 +1,18 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {Router, Route, browserHistory, IndexRoute} from 'react-router';
+import Layout from './Components/layout/layout';
+import Home from './Components/App';
+import Stats from './Components/stats/stats';
+import About from './Components/about/about';
+
+ReactDOM.render(
+  <Router history={browserHistory}>
+    <Route path="/" component={Layout}>
+      <IndexRoute component={Home}></IndexRoute>
+      <Route path="statistics" component={Stats}></Route>
+      <Route path="about" component={About}></Route>
+    </Route>
+  </Router>,
+  document.getElementById('app')
+);

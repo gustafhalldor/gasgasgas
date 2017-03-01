@@ -1,0 +1,24 @@
+/*.border {
+  border: 1px solid black;
+}*/
+
+.flexcontainer {
+  display: flex;
+}
+
+.formandmap {
+  composes: flexcontainer;
+  margin-top: 5em;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-bottom: 1em;
+  background-color: #ffb732;
+  padding-top: 0.5em;
+}
+
+.flexcolumn {
+  composes: flexcontainer;
+  flex-direction: column;
+
+}

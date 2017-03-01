@@ -1,0 +1,12 @@
+
+.flexcontainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  composes: button from "../css/button.css";
+  margin-bottom: 1em;
+  background-color: rgba(0, 142, 255, 0.53);
+  color: white;
+}
