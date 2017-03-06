@@ -5,7 +5,7 @@ const scraper = require('./scraper');
 
 let timerShouldRun = true;
 
-function setTimer() {
+function setScrapeTimer() {
   if (timerShouldRun) {
     console.log("initial scrape og set timer í gang");
     // Fetching prices once at server startup
@@ -26,8 +26,10 @@ function setTimer() {
     rule.hour = [0, 4, 8, 12, 16, 20];
     rule.minute = 0;
     scheduler.scheduleJob(rule, () => {
+      console.log("er í efra scrape timer og klukkan er: "+ new Date());
       priceList.gasPrices()
         .then((result) => {
+          console.log("er í scrape timer og klukkan er: "+ new Date());
           // result.data is a string containing the HTML
           scraper.scrape(result.data, true);
           scraper.scrape(result.data, false);
@@ -40,5 +42,5 @@ function setTimer() {
 }
 
 module.exports = {
-  setTimer,
+  setScrapeTimer,
 };

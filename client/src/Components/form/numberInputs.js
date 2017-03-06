@@ -18,6 +18,7 @@ class NumberInputs extends Component {
           type={item.type}
           value={item.value}
           distance={this.props.distance}
+          duration={this.props.duration}
           onChange={this.handleInputChange.bind(this)}/>
       )
     }

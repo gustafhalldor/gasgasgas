@@ -3,31 +3,24 @@ const express = require('express');
 const router = express.Router();
 const scheduler = require('./functions'); // for scheduling scrape calls
 var jsonfile = require('jsonfile');
-// const db = require('./dbConnect');
+const db = require('./dbConnect');
+import saver from './gasPriceSaver.js';
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
-  scheduler.setTimer();
+  console.log(req.url);
+  console.log(saver.initGasPriceSaver());
 });
 
-router.get('/getPrices95', (req, res, next) => {
-  let file = './src/tmp/data95.json';
-  jsonfile.readFile(file, function(err, obj) {
-    console.dir(obj)
-    res.json(obj);
-  })
+
+// Use input from user to get data X days back
+router.get('/getRegularPricesXDaysBack/:days', (req, res, next) => {
+  db.getRegularPrices(parseInt(req.params.days, 10))
+  .then((data) => {
+    res.send(data);
+  });
 });
 
-router.get('/getPricesDiesel', (req, res, next) => {
-  let file = './src/tmp/dataDiesel.json';
-  jsonfile.readFile(file, function(err, obj) {
-    console.dir(obj)
-    res.json(obj);
-  })
-});
 
-router.get('/statistics', (req, res, next) => {
-
-});
 
 module.exports = router;

@@ -430,7 +430,26 @@ const data = [
   "location":"Ásvellir",
   "lat": 64.053302,
   "lng": -21.969294
-  }
+  },
+  {
+  "company": "dælan",
+  "location":"Fellsmúli",
+  "lat": 64.131023,
+  "lng": -21.877300
+  },
+  {
+  "company": "dælan",
+  "location":"Staldrið",
+  "lat": 64.112599,
+  "lng": -21.842054
+  },
+  {
+  "company": "dælan",
+  "location":"Smáralind",
+  "lat": 64.100450,
+  "lng": -21.888491
+  },
+
 ]
 
 module.exports = data;

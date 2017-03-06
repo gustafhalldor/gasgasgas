@@ -23,7 +23,6 @@ class Map extends Component {
   }
 
   componentDidMount() {
-
     this.map = new google.maps.Map(this.refs.map, {
       center: this.props.defaultPosition,
       zoom: 12
@@ -65,7 +64,7 @@ class Map extends Component {
       map.fitBounds(bounds);
     });
 
-    (this.map).addListener('click', (event) => {
+    map.addListener('click', (event) => {
 
       if(this.state.userLocMarker === null) {
         let marker = new google.maps.Marker({
@@ -75,7 +74,7 @@ class Map extends Component {
             isOpen: false
         });
 
-        marker.setMap(this.map);
+        marker.setMap(map);
         this.setState({
           userLocMarker: marker
         });
@@ -113,6 +112,9 @@ class Map extends Component {
         case 'atlantsolía':
           icon = 'https://notendur.hi.is/~ghg4/Loka/atlantsolía.png';
           break;
+        case 'dælan':
+          icon = 'https://notendur.hi.is/~ghg4/Loka/daelan.png';
+          break;
         default:
 
       }
@@ -140,7 +142,7 @@ class Map extends Component {
       marker.infowindow = infowindow;
 
       // To add the marker to the map, call setMap();
-      marker.setMap(this.map);
+      marker.setMap(map);
 
       let thisMapObject = this;
 
@@ -272,12 +274,8 @@ class Map extends Component {
             let distance = response.rows[0].elements[0].distance.text;
             let duration = response.rows[0].elements[0].duration.text;
 
-            const regular = this.state.selectedMarker.regularGas;
-            const diesel = this.state.selectedMarker.diesel;
-
             // send distance, duration and prices of gas up to parent
-            this.props.parentCB(distance.split(' ')[0], duration.split(' ')[0],
-                                  regular, diesel);
+            this.props.parentCB(distance.split(' ')[0], duration.split(' ')[0]);
         } else {
           // breyta þessu, ekki gott að alerta í feisið á fólki
             alert("Unable to find the distance via road.");

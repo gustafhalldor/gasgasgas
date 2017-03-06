@@ -39,12 +39,10 @@ class App extends Component {
     });
   }
 
-  getDistDurationAndPrices(dist, dur, regular, diesel) {
+  getDistAndDuration(dist, dur) {
     this.setState({
       distance: dist,
-      duration: dur,
-      regularPrice: regular,
-      dieselPrice: diesel
+      duration: dur
     })
   }
 
@@ -52,9 +50,10 @@ class App extends Component {
     return (
       <div className={styles.flexcolumn}>
         <div className={styles.formandmap}>
-          <Map onMarkerClick={this.handleMarkerClick.bind(this)} parentCB={this.getDistDurationAndPrices.bind(this)}/>
+          <Map onMarkerClick={this.handleMarkerClick.bind(this)} parentCB={this.getDistAndDuration.bind(this)}/>
           <Form   onSubmit={this.handleFormData.bind(this)}
-                  distance={this.state.distance}/>
+                  distance={this.state.distance}
+                  duration={this.state.duration}/>
         </div>
         <Results data={this.state}/>
       </div>
