@@ -2,17 +2,32 @@
 
 import React, { Component } from 'react';
 import gasStations from './data/gas_stations.js';
-import data95 from '../../../../server/data/data95.json';
-import dataDiesel from '../../../../server/data/dataDiesel.json';
+//import data95 from '../../../../server/data/data95.json';
+//import dataDiesel from '../../../../server/data/dataDiesel.json';
 import styles from './map.css';
 
 // TODO: Finna út geolocation hjá notanda og nota bara this.props.defaultPosition ef
-// það tekst ekki.
+// það tekst ekki. 
 
 
 class Map extends Component {
   constructor(props) {
     super(props);
+
+    let thisStatObject = this;
+    fetch(`http://localhost:3001/api/get95price/`)
+        .then(response => {
+          return response.json();
+        }).then(function(response) {
+          thisStatObject.setState({data95: response});
+        });
+
+    fetch(`http://localhost:3001/api/getDieselPrice/`)
+        .then(response => {
+          return response.json();
+        }).then(function(response) {
+          thisStatObject.setState({dataDiesel: response});
+        });
 
     this.state = {
       selectedMarker: null,
@@ -173,16 +188,16 @@ class Map extends Component {
     let location = m.location;
 
     let thisMapObject = this;
-    for(let comp in data95) {
+    for(let comp in this.state.data95) {
       if(comp === company) {
-        if(data95[comp].length === 1) {
-          thisMapObject.state.selectedMarker.regularGas = data95[comp][0].price;
+        if(this.state.data95[comp].length === 1) {
+          thisMapObject.state.selectedMarker.regularGas = this.state.data95[comp][0].price;
         } else {
-          for(let loc in data95[comp]) {
-            if ({}.hasOwnProperty.call(data95[comp], loc)) {
-              let locationCheck = data95[comp][loc].location;
+          for(let loc in this.state.data95[comp]) {
+            if ({}.hasOwnProperty.call(this.state.data95[comp], loc)) {
+              let locationCheck = this.state.data95[comp][loc].location;
               if(locationCheck === location) {
-                thisMapObject.state.selectedMarker.regularGas = data95[comp][loc].price;
+                thisMapObject.state.selectedMarker.regularGas = this.state.data95[comp][loc].price;
               }
             }
           }
@@ -190,16 +205,16 @@ class Map extends Component {
       } // end outer if
     } // end for
 
-    for(let comp in dataDiesel) {
+    for(let comp in this.state.dataDiesel) {
       if(comp === company) {
-        if(dataDiesel[comp].length === 1) {
-          thisMapObject.state.selectedMarker.diesel = dataDiesel[comp][0].price;
+        if(this.state.dataDiesel[comp].length === 1) {
+          thisMapObject.state.selectedMarker.diesel = this.state.dataDiesel[comp][0].price;
         } else {
-          for(let loc in dataDiesel[comp]) {
-            if ({}.hasOwnProperty.call(dataDiesel[comp], loc)) {
-            let locationCheck = dataDiesel[comp][loc].location;
+          for(let loc in this.state.dataDiesel[comp]) {
+            if ({}.hasOwnProperty.call(this.state.dataDiesel[comp], loc)) {
+            let locationCheck = this.state.dataDiesel[comp][loc].location;
               if(locationCheck === location) {
-                thisMapObject.state.selectedMarker.diesel = dataDiesel[comp][loc].price;
+                thisMapObject.state.selectedMarker.diesel = this.state.dataDiesel[comp][loc].price;
               }
             }
           }

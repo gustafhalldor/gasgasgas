@@ -23,8 +23,8 @@ function setScrapeTimer() {
     const rule = new scheduler.RecurrenceRule();
     rule.dayOfWeek = [new scheduler.Range(0, 6)];  // runs every day of the week
     // runs at 4 hour intervals over the day and on these hours
-    rule.hour = [0, 4, 8, 12, 16, 20];
-    rule.minute = 0;
+    //rule.hour = [0, 4, 8, 9, 10, 11, 12, 16, 20];
+    rule.minute = [50, 20];
     scheduler.scheduleJob(rule, () => {
       console.log("er í efra scrape timer og klukkan er: "+ new Date());
       priceList.gasPrices()

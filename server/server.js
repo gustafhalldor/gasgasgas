@@ -6,6 +6,9 @@ const router = require('./routes');
 const app = express();
 const scheduler = require('./functions'); // for scheduling scrape calls
 import saver from './gasPriceSaver.js';
+const cors = require('cors');
+
+app.use(cors());
 
 app.set('port', (process.env.PORT || 3001));
 

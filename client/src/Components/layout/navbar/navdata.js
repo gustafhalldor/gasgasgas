@@ -6,7 +6,7 @@ const data = [
   },
   {
     "nr": "2",
-    "text": "Tölfræði",
+    "text": "Verðþróun",
     "url": "/statistics"
   },
   {
@@ -19,7 +19,7 @@ const data = [
     //     "url": "#",
     //     "submenu": [
     //       {
-    //         "text": "SubSublink 1", 
+    //         "text": "SubSublink 1",
     //         "url": "#"
     //       }
     //     ]

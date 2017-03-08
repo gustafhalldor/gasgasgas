@@ -21,6 +21,18 @@ router.get('/getRegularPricesXDaysBack/:days', (req, res, next) => {
   });
 });
 
+router.get('/get95price', (req, res, next) => {
+  const file = './server/data/data95.json';
+  jsonfile.readFile(file, function(err, data) {
+    res.send(data);
+  });
+});
 
+router.get('/getDieselPrice', (req, res, next) => {
+  const file = './server/data/dataDiesel.json';
+  jsonfile.readFile(file, function(err, data) {
+    res.send(data);
+  });
+});
 
 module.exports = router;
