@@ -24,12 +24,11 @@ function createTables() {
   });
 
   // Departure table created.
-  db.none(`CREATE TABLE IF NOT EXISTS worldPrice(
+  db.none(`CREATE TABLE IF NOT EXISTS brentOil(
             id              SERIAL PRIMARY KEY,
             date            timestamp,
-            iceAvg          float,
-            oilBarrel       float,
-            gasWorld        float
+            price           float,
+            percentage      float
   )`)
   .then(() => {
   })
@@ -50,9 +49,20 @@ function saveRegular(obj) {
   });
 }
 
+function saveOil(obj) {
+  db.none(`INSERT INTO brentOil(date, price, percentage) VALUES($1, $2, $3)`,
+    [obj.date, obj.price, obj.percentage])
+  .then(() => {
+  })
+  .catch((error) => {
+    console.log("Unable to save to db");
+  });
+}
+
 function getRegularPrices(numDays) {
   return db.any(`SELECT * FROM gasPricesRegular
-                  WHERE date >= CURRENT_DATE - INTERVAL '$1 DAY'`, [numDays]);
+                  WHERE date >= CURRENT_DATE - INTERVAL '$1 DAY'
+                  ORDER BY id`, [numDays]);
 }
 
 function checkIfAlreadySaved(dateCheck) {
@@ -64,6 +74,7 @@ function checkIfAlreadySaved(dateCheck) {
 module.exports = {
   createTables,
   saveRegular,
+  saveOil,
   getRegularPrices,
   checkIfAlreadySaved
 };

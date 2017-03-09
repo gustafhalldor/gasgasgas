@@ -8,8 +8,6 @@ import saver from './gasPriceSaver.js';
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
-  console.log(req.url);
-  console.log(saver.initGasPriceSaver());
 });
 
 
@@ -30,6 +28,13 @@ router.get('/get95price', (req, res, next) => {
 
 router.get('/getDieselPrice', (req, res, next) => {
   const file = './server/data/dataDiesel.json';
+  jsonfile.readFile(file, function(err, data) {
+    res.send(data);
+  });
+});
+
+router.get('/getCrudeOilPrice', (req, res, next) => {
+  const file = './server/data/crudeOil.json';
   jsonfile.readFile(file, function(err, data) {
     res.send(data);
   });

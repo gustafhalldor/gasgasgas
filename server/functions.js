@@ -12,30 +12,41 @@ function setScrapeTimer() {
     priceList.gasPrices()
       .then((result) => {
         // result.data is a string containing the HTML
-        scraper.scrape(result.data, true);
-        scraper.scrape(result.data, false);
+        scraper.scrapeGas(result.data, true);
+        scraper.scrapeGas(result.data, false);
         console.log("búinn með initial scrape");
+      })
+     .catch((error) => {
+     });
+
+    priceList.crudeOilPrice()
+      .then((result) => {
+        scraper.scrapeBrentOil(result.data);
       })
      .catch((error) => {
      });
 
     // Creating a recurring rule for scraping
     const rule = new scheduler.RecurrenceRule();
-    rule.dayOfWeek = [new scheduler.Range(0, 6)];  // runs every day of the week
-    // runs at 4 hour intervals over the day and on these hours
-    //rule.hour = [0, 4, 8, 9, 10, 11, 12, 16, 20];
-    rule.minute = [50, 20];
+    rule.dayOfWeek = [new scheduler.Range(0, 6)];
+    rule.minute = [59, 29];
+    // runs on 30 min intervals every day of the week
     scheduler.scheduleJob(rule, () => {
-      console.log("er í efra scrape timer og klukkan er: "+ new Date());
       priceList.gasPrices()
         .then((result) => {
-          console.log("er í scrape timer og klukkan er: "+ new Date());
-          // result.data is a string containing the HTML
-          scraper.scrape(result.data, true);
-          scraper.scrape(result.data, false);
+          scraper.scrapeGas(result.data, true);
+          scraper.scrapeGas(result.data, false);
+        })
+        .catch((error) => {
+        });
+
+      priceList.crudeOilPrice()
+        .then((result) => {
+          console.log("búinn að ná í htmlið og er að senda yfir í scraper");
+          scraper.scrapeBrentOil(result.data);
         })
        .catch((error) => {
-       });
+        });
     });
   }
   timerShouldRun = false;

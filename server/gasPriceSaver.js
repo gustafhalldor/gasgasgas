@@ -6,16 +6,32 @@ import jsonfile from 'jsonfile';
 function initGasPriceSaver() {
   // Creating a recurring rule for saving to db
   const rule = new scheduler.RecurrenceRule();
-  rule.dayOfWeek = [new scheduler.Range(0, 6)];  // runs every day of the week
-  // runs at 4 hour intervals over the day and on these hours
+  rule.dayOfWeek = [new scheduler.Range(0, 6)];
+  // runs at 30 min intervals, every day of the week
   rule.minute = [0, 30];
   const file = './server/data/data95.json';
+  const file2 = './server/data/crudeOil.json';
   scheduler.scheduleJob(rule, () => {
     jsonfile.readFile(file, function(err, data) {
       let regularGasObject = getRegularPrice(data);
       db.saveRegular(regularGasObject);
     })
+
+    jsonfile.readFile(file2, function(err, data) {
+      let oilObject = getOilPrice(data);
+      db.saveOil(oilObject);
+    })
   });
+}
+
+function getOilPrice(dataOil) {
+  let object = {};
+
+  object.date = getDateTime(); //yyyy-mm-dd hh:mm
+  object.price = dataOil.price;
+  object.percentage = dataOil.percentage.slice(0, 5);
+
+  return object;
 }
 
 function getRegularPrice(data95) {

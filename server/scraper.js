@@ -10,7 +10,7 @@ var jsonfile = require('jsonfile');
  *                  False if disel is being requested
  * @returns JSON object
  */
-function scrape(html, type95) {
+function scrapeGas(html, type95) {
 
   console.log("í scrape falli og klukkan er: "+ new Date());
   const $ = cheerio.load(html);
@@ -87,10 +87,21 @@ function scrape(html, type95) {
   jsonfile.writeFile(file, companies, (err) => {
     //console.error(err)
   });
+}
 
-//  return companies;
+function scrapeBrentOil(html) {
+  const $$ = cheerio.load(html);
+  let oilObject = {};
+  let file = './server/data/crudeOil.json';
+  oilObject.price = $$('#ctl00_ContentPlaceMain1_LabelBuyPriceBig').text();
+  oilObject.percentage = $$('#ctl00_ContentPlaceMain1_LabelPercentage').text();
+
+  jsonfile.writeFile(file, oilObject, (err) => {
+    //console.error(err)
+  });
 }
 
 module.exports = {
-  scrape,
+  scrapeGas,
+  scrapeBrentOil
 };

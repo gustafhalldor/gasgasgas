@@ -45,8 +45,10 @@ class LineComp extends Component {
           lineTension: 0.1,
           backgroundColor: '#808080',
           borderColor: '#808080',
-          pointRadius: 1,
-          pointHitRadius: 5
+          pointRadius: 0.6,
+          pointHitRadius: 5,
+          borderWidth: 2,
+          pointHoverBorderWidth: 2
         },
         {
           data: orkanx,
@@ -55,8 +57,10 @@ class LineComp extends Component {
           lineTension: 0.1,
           backgroundColor: '#0000ff',
           borderColor: '#0000ff',
-          pointRadius: 1,
-          pointHitRadius: 5
+          pointRadius: 0.6,
+          pointHitRadius: 5,
+          borderWidth: 2,
+          pointHoverBorderWidth: 0.5
         },
          {
            data: skeljungur,
@@ -65,8 +69,10 @@ class LineComp extends Component {
            lineTension: 0.1,
            backgroundColor: '#0fffff',
            borderColor: '#0fffff',
-           pointRadius: 1,
-           pointHitRadius: 5
+           pointRadius: 0.6,
+           pointHitRadius: 5,
+           borderWidth: 2,
+           pointHoverBorderWidth: 0.5
          },
          {
            data: olís,
@@ -75,8 +81,10 @@ class LineComp extends Component {
            lineTension: 0.1,
            backgroundColor: '#00ff00',
            borderColor: '#00ff00',
-           pointRadius: 1,
-           pointHitRadius: 5
+           pointRadius: 0.6,
+           pointHitRadius: 5,
+           borderWidth: 2,
+           pointHoverBorderWidth: 0.5
          },
          {
            data: ob,
@@ -85,8 +93,10 @@ class LineComp extends Component {
            lineTension: 0.1,
            backgroundColor: '#ff0000',
            borderColor: '#ff0000',
-           pointRadius: 1,
-           pointHitRadius: 5
+           pointRadius: 0.6,
+           pointHitRadius: 5,
+           borderWidth: 2,
+           pointHoverBorderWidth: 0.5
          },
          {
            data: atlantsolía,
@@ -95,8 +105,10 @@ class LineComp extends Component {
            lineTension: 0.1,
            backgroundColor: '#fff000',
            borderColor: '#fff000',
-           pointRadius: 1,
-           pointHitRadius: 5
+           pointRadius: 0.6,
+           pointHitRadius: 5,
+           borderWidth: 2,
+           pointHoverBorderWidth: 0.5
          },
          {
            data: dælan,
@@ -105,18 +117,22 @@ class LineComp extends Component {
            lineTension: 0.1,
            backgroundColor: '#ff00ff',
            borderColor: '#ff00ff',
-           pointRadius: 1,
-           pointHitRadius: 5
+           pointRadius: 0.6,
+           pointHitRadius: 5,
+           borderWidth: 2,
+           pointHoverBorderWidth: 0.5
          },
          {
            data: n1,
            label: 'n1',
            fill: false,
            lineTension: 0.1,
-           backgroundColor: '#000',
-           borderColor: '#000',
-           pointRadius: 1,
-           pointHitRadius: 5
+           backgroundColor: '#934915',
+           borderColor: '#934915',
+           pointRadius: 0.6,
+           pointHitRadius: 5,
+           borderWidth: 2,
+           pointHoverBorderWidth: 0.5
          }
       ]
       return chartData;
@@ -130,7 +146,7 @@ class LineComp extends Component {
         scales: {
           yAxes: [{
               ticks: {
-                  max: 215,
+                  max: 211,
                   min: 185,
                   stepSize: 2
               }
@@ -144,22 +160,22 @@ class LineComp extends Component {
         title: {
             display: true,
             fontSize: 14,
-            text: "Verð 95 oktan seinustu 10 dagana",
+            text: "Verð 95 oktan á höfuðborgarsvæðinu seinustu 10 dagana",
         },
         maintainAspectRatio: false,
     }
 
-    let lineGraph = '';
+    let lineGraphGas = '';
     if(this.props.data != null) {
       let data = this.createChartData();
-      lineGraph = <Line data={data} options={chartOptions} height={450}/>
+      lineGraphGas = <Line data={data} options={chartOptions} height={450}/>
     } else {
-      lineGraph = <h3>Hér á að vera graf</h3>
+      lineGraphGas = <h3>Hér á að vera graf</h3>
     }
 
     return (
       <div className={styles.wandh}>
-        {lineGraph}
+        {lineGraphGas}
       </div>
     )
   }
