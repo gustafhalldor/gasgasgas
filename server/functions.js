@@ -10,21 +10,28 @@ function setScrapeTimer() {
     console.log("initial scrape og set timer í gang");
     // Fetching prices once at server startup
     priceList.gasPrices()
-      .then((result) => {
-        // result.data is a string containing the HTML
-        scraper.scrapeGas(result.data, true);
-        scraper.scrapeGas(result.data, false);
-        console.log("búinn með initial scrape");
-      })
-     .catch((error) => {
-     });
+    .then((result) => {
+      // result.data is a string containing the HTML
+      scraper.scrapeGas(result.data, true);
+      scraper.scrapeGas(result.data, false);
+      console.log("búinn með initial scrape");
+    })
+    .catch((error) => {
+    });
 
-    priceList.crudeOilPrice()
-      .then((result) => {
-        scraper.scrapeBrentOil(result.data);
+    priceList.exchangeRate()
+    .then((result) => {
+      scraper.saveExchangeRateToFile(result.data);
+      priceList.crudeOilPrice()
+      .then((result2) => {
+        scraper.scrapeBrentOil(result2.data);
       })
-     .catch((error) => {
-     });
+      .catch((error) => {
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    })
 
     // Creating a recurring rule for scraping
     const rule = new scheduler.RecurrenceRule();
@@ -40,13 +47,19 @@ function setScrapeTimer() {
         .catch((error) => {
         });
 
-      priceList.crudeOilPrice()
+        priceList.exchangeRate()
         .then((result) => {
-          console.log("búinn að ná í htmlið og er að senda yfir í scraper");
-          scraper.scrapeBrentOil(result.data);
+          scraper.saveExchangeRateToFile(result.data);
+          priceList.crudeOilPrice()
+          .then((result2) => {
+            scraper.scrapeBrentOil(result2.data);
+          })
+          .catch((error) => {
+          });
         })
-       .catch((error) => {
-        });
+        .catch((error) => {
+          console.log(error);
+        })
     });
   }
   timerShouldRun = false;

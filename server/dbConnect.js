@@ -28,7 +28,8 @@ function createTables() {
             id              SERIAL PRIMARY KEY,
             date            timestamp,
             price           float,
-            percentage      float
+            percentage      float,
+            avggas          float
   )`)
   .then(() => {
   })
@@ -45,17 +46,17 @@ function saveRegular(obj) {
   .then(() => {
   })
   .catch((error) => {
-    console.log("Unable to save to db");
+    console.log("Unable to save Regular to db");
   });
 }
 
 function saveOil(obj) {
-  db.none(`INSERT INTO brentOil(date, price, percentage) VALUES($1, $2, $3)`,
-    [obj.date, obj.price, obj.percentage])
+  db.none(`INSERT INTO brentOil(date, price, percentage, rate, avggas) VALUES($1, $2, $3, $4, $5)`,
+    [obj.date, obj.price, obj.percentage, obj.exchangeRate, obj.avg])
   .then(() => {
   })
   .catch((error) => {
-    console.log("Unable to save to db");
+    console.log("Unable to save Oil to db");
   });
 }
 
@@ -63,6 +64,19 @@ function getRegularPrices(numDays) {
   return db.any(`SELECT * FROM gasPricesRegular
                   WHERE date >= CURRENT_DATE - INTERVAL '$1 DAY'
                   ORDER BY id`, [numDays]);
+}
+
+function getOilPriceAndExchangeRate(numDays) {
+  return db.any(`SELECT * FROM brentOil
+                  WHERE date >= CURRENT_DATE - INTERVAL '$1 DAY'
+                  ORDER BY id`, [numDays]);
+}
+
+function getRegularPricesAndOil(numDays) {
+  return db.any(`SELECT g.date, orkan, orkanx, atlantsolía, ob, olís, skeljungur, n1, dælan, price
+                  FROM gasPricesRegular g LEFT OUTER JOIN brentOil ON (g.date = brentOil.date)
+                  WHERE g.date >= CURRENT_DATE - INTERVAL '$1 DAY'
+                  ORDER BY g.date`, [numDays]);
 }
 
 function checkIfAlreadySaved(dateCheck) {
@@ -76,5 +90,7 @@ module.exports = {
   saveRegular,
   saveOil,
   getRegularPrices,
+  getOilPriceAndExchangeRate,
+  getRegularPricesAndOil,
   checkIfAlreadySaved
 };

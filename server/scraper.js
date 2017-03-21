@@ -16,6 +16,8 @@ function scrapeGas(html, type95) {
   const $ = cheerio.load(html);
   const list = [];
   let file = ''; // variable which stores the name of the JSON file to write to
+  let file2 = './server/data/crudeOil.json';
+  let sum = 0;
   if (type95) {
     file = './server/data/data95.json';
     // slicing out the first <tr> since that's the headers and we don't need them
@@ -28,6 +30,7 @@ function scrapeGas(html, type95) {
         location: elemChildren.eq(1).text(),
         price: elemChildren.eq(2).text(),
       };
+      sum += parseInt(pushMe.price);
       list.push(pushMe);
     });
   } else {
@@ -51,7 +54,7 @@ function scrapeGas(html, type95) {
     n1: [],
     ob: [],
     olís: [],
-    skeljungur: [],
+    skeljungur: []
   };
 
   for (let i = 0; i < list.length; i++) {
@@ -84,6 +87,8 @@ function scrapeGas(html, type95) {
     }
   }
 
+  companies.avg = (sum / list.length).toFixed(2);
+
   jsonfile.writeFile(file, companies, (err) => {
     //console.error(err)
   });
@@ -93,15 +98,27 @@ function scrapeBrentOil(html) {
   const $$ = cheerio.load(html);
   let oilObject = {};
   let file = './server/data/crudeOil.json';
+  let file2 = './server/data/exchangeRate.json';
   oilObject.price = $$('#ctl00_ContentPlaceMain1_LabelBuyPriceBig').text();
   oilObject.percentage = $$('#ctl00_ContentPlaceMain1_LabelPercentage').text();
 
-  jsonfile.writeFile(file, oilObject, (err) => {
+  jsonfile.readFile(file2, function(err, data) {
+    oilObject.exchangeRate = data;
+    jsonfile.writeFile(file, oilObject, (err) => {
+      //console.error(err)
+    });
+  })
+}
+
+function saveExchangeRateToFile(data) {
+  let file = './server/data/exchangeRate.json';
+  jsonfile.writeFile(file, data.results[1].value.toString(), (err) => {
     //console.error(err)
   });
 }
 
 module.exports = {
   scrapeGas,
-  scrapeBrentOil
+  scrapeBrentOil,
+  saveExchangeRateToFile
 };

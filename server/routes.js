@@ -19,6 +19,13 @@ router.get('/getRegularPricesXDaysBack/:days', (req, res, next) => {
   });
 });
 
+router.get('/getOilBarrelPrice/:days', (req, res, next) => {
+  db.getOilPriceAndExchangeRate(parseInt(req.params.days, 10))
+  .then((data) => {
+    res.send(data);
+  });
+});
+
 router.get('/get95price', (req, res, next) => {
   const file = './server/data/data95.json';
   jsonfile.readFile(file, function(err, data) {

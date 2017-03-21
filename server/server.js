@@ -22,7 +22,7 @@ app.get('*', function(request, response) {
 });
 
 app.listen(app.get('port'), () => {
-  db.createTables(); 
+  db.createTables();
   scheduler.setScrapeTimer();
   saver.initGasPriceSaver();
   console.log(`Find the server at: http://localhost:${app.get('port')}/`); // eslint-disable-line no-console

@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import {Line} from 'react-chartjs-2';
 import styles from './lineComponent.css';
 
-class LineComp extends Component {
+class LineCompGas extends Component {
 
-  componentWillMount() {
+  constructor(props) {
+    super(props);
 
+    this.state = {
+      gasScale: 197
+    }
   }
 
   createChartData() {
@@ -20,6 +24,7 @@ class LineComp extends Component {
     let atlantsolía = [];
     let dælan = [];
     let n1 = [];
+    let oil = [];
 
     if(this.props.data != null) {
       for (var i = 0; i < this.props.data.length; i++) {
@@ -34,102 +39,111 @@ class LineComp extends Component {
         atlantsolía.push(dataset.atlantsolía);
         dælan.push(dataset.dælan);
         n1.push(dataset.n1);
+        oil.push(dataset.price);
       }
 
       chartData.labels = days;
       chartData.datasets = [
         {
           data: orkan,
+          yAxisID: "regular",
           label: 'orkan',
           fill: false,
           lineTension: 0.1,
           backgroundColor: '#808080',
           borderColor: '#808080',
-          pointRadius: 0.6,
+          pointRadius: 0,
           pointHitRadius: 5,
           borderWidth: 2,
           pointHoverBorderWidth: 2
         },
         {
           data: orkanx,
+          yAxisID: "regular",
           label: 'orkanx',
           fill: false,
           lineTension: 0.1,
           backgroundColor: '#0000ff',
           borderColor: '#0000ff',
-          pointRadius: 0.6,
+          pointRadius: 0,
           pointHitRadius: 5,
           borderWidth: 2,
           pointHoverBorderWidth: 0.5
         },
          {
            data: skeljungur,
+           yAxisID: "regular",
            label: 'skeljungur',
            fill: false,
            lineTension: 0.1,
            backgroundColor: '#0fffff',
            borderColor: '#0fffff',
-           pointRadius: 0.6,
+           pointRadius: 0,
            pointHitRadius: 5,
            borderWidth: 2,
            pointHoverBorderWidth: 0.5
          },
          {
            data: olís,
+           yAxisID: "regular",
            label: 'olís',
            fill: false,
            lineTension: 0.1,
            backgroundColor: '#00ff00',
            borderColor: '#00ff00',
-           pointRadius: 0.6,
+           pointRadius: 0,
            pointHitRadius: 5,
            borderWidth: 2,
            pointHoverBorderWidth: 0.5
          },
          {
            data: ob,
+           yAxisID: "regular",
            label: 'ob',
            fill: false,
            lineTension: 0.1,
            backgroundColor: '#ff0000',
            borderColor: '#ff0000',
-           pointRadius: 0.6,
+           pointRadius: 0,
            pointHitRadius: 5,
            borderWidth: 2,
            pointHoverBorderWidth: 0.5
          },
          {
            data: atlantsolía,
+           yAxisID: "regular",
            label: 'atlantsolía',
            fill: false,
            lineTension: 0.1,
            backgroundColor: '#fff000',
            borderColor: '#fff000',
-           pointRadius: 0.6,
+           pointRadius: 0,
            pointHitRadius: 5,
            borderWidth: 2,
            pointHoverBorderWidth: 0.5
          },
          {
            data: dælan,
+           yAxisID: "regular",
            label: 'dælan',
            fill: false,
            lineTension: 0.1,
            backgroundColor: '#ff00ff',
            borderColor: '#ff00ff',
-           pointRadius: 0.6,
+           pointRadius: 0,
            pointHitRadius: 5,
            borderWidth: 2,
            pointHoverBorderWidth: 0.5
          },
          {
            data: n1,
+           yAxisID: "regular",
            label: 'n1',
            fill: false,
            lineTension: 0.1,
            backgroundColor: '#934915',
            borderColor: '#934915',
-           pointRadius: 0.6,
+           pointRadius: 0,
            pointHitRadius: 5,
            borderWidth: 2,
            pointHoverBorderWidth: 0.5
@@ -144,13 +158,21 @@ class LineComp extends Component {
   render() {
     const chartOptions = {
         scales: {
-          yAxes: [{
+          yAxes: [
+            {
+              scaleLabel: {
+                display: true,
+                labelString: "ISK á líter"
+              },
+              position: "left",
+              "id": "regular",
               ticks: {
-                  max: 211,
-                  min: 185,
-                  stepSize: 2
+                max: this.state.gasScale*1.05,
+                min: this.state.gasScale*0.95,
+                stepSize: 2
               }
-          }],
+            }
+          ],
           xAxes: [{
             ticks: {
                 fontSize: 11
@@ -160,7 +182,7 @@ class LineComp extends Component {
         title: {
             display: true,
             fontSize: 14,
-            text: "Verð 95 oktan á höfuðborgarsvæðinu seinustu 10 dagana",
+            text: `Verð 95 oktan á höfuðborgarsvæðinu seinustu ${this.props.days} dagana`,
         },
         maintainAspectRatio: false,
     }
@@ -181,4 +203,4 @@ class LineComp extends Component {
   }
 }
 
-module.exports = LineComp;
+module.exports = LineCompGas;
