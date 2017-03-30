@@ -2,13 +2,16 @@ import React, { Component } from 'react';
 import Form from './form/Form.js';
 import Map from './map/Map.js';
 import Results from './results/Results.js';
+import InfoWindow from './info/infoWindow.js';
 import styles from './app.css';
 
 // Google Maps API key: AIzaSyAO0bYbvQc-LYwluOSaD2wDURsxohJ8AB0
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+
+    const check = localStorage.getItem("noInfoWindow");
 
     this.state = {
       milage: 0,
@@ -18,7 +21,8 @@ class App extends Component {
       duration: 0,
       typeOfGas: '95 oktan',
       regularPrice: 0,
-      dieselPrice: 0
+      dieselPrice: 0,
+      showOverlay: !check
     }
   }
 
@@ -46,9 +50,16 @@ class App extends Component {
     })
   }
 
+  handleButtonClick( noshow ) {
+    if (noshow === true) {
+      localStorage.setItem("noInfoWindow", true);
+    }
+  }
+
   render() {
     return (
       <div className={styles.flexcolumn}>
+        <InfoWindow onButtonClick={this.handleButtonClick.bind(this)} showOverlay={this.state.showOverlay}/>
         <div className={styles.formandmap}>
           <Map onMarkerClick={this.handleMarkerClick.bind(this)} parentCB={this.getDistAndDuration.bind(this)}/>
           <Form   onSubmit={this.handleFormData.bind(this)}

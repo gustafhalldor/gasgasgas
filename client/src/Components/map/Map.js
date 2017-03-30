@@ -7,7 +7,7 @@ import gasStations from './data/gas_stations.js';
 import styles from './map.css';
 
 // TODO: Finna út geolocation hjá notanda og nota bara this.props.defaultPosition ef
-// það tekst ekki. 
+// það tekst ekki.
 
 
 class Map extends Component {
@@ -329,7 +329,7 @@ class Map extends Component {
 
 
     return (
-      <div>
+      <div className={styles.leftSide}>
         <span className={styles.slightlylargerfont}>{validateGasStation}</span>
         <input ref="search_box" type="text" placeholder="Leita..." className={styles.searchbox}/>
         <div className={styles.mapStyle} ref="map" >I should be a map!</div>

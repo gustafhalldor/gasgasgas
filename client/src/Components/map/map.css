@@ -5,6 +5,11 @@
   margin-bottom: 7px;
 }
 
+.leftSide {
+  display: flex;
+  flex-direction: column;
+}
+
 .searchbox {
   margin-top: 10px;
   font-family: lato;

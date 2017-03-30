@@ -50,9 +50,11 @@
   },
   "proxy": "http://localhost:3001/",
   "dependencies": {
+    "autoprefixer": "^6.5.1",
     "chart.js": "^2.5.0",
     "react": "^15.4.2",
     "react-chartjs-2": "^2.0.5",
+    "react-dev-utils": "^0.3.0",
     "react-dom": "^15.4.2",
     "react-router": "^3.0.2"
   },

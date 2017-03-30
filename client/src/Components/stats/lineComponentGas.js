@@ -8,7 +8,13 @@ class LineCompGas extends Component {
     super(props);
 
     this.state = {
-      gasScale: 197
+      gasScale: 0
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.data !== null) {
+      this.setState({ gasScale: nextProps.data.avg});
     }
   }
 
@@ -26,9 +32,9 @@ class LineCompGas extends Component {
     let n1 = [];
     let oil = [];
 
-    if(this.props.data != null) {
-      for (var i = 0; i < this.props.data.length; i++) {
-        let dataset = this.props.data[i];
+    if(this.props.data.data !== null) {
+      for (var i = 0; i < this.props.data.data.length; i++) {
+        let dataset = this.props.data.data[i];
 
         days.push(dataset.date.slice(0, 16));
         orkan.push(dataset.orkan);
@@ -167,8 +173,8 @@ class LineCompGas extends Component {
               position: "left",
               "id": "regular",
               ticks: {
-                max: this.state.gasScale*1.05,
-                min: this.state.gasScale*0.95,
+                max: this.state.gasScale*1.08,
+                min: this.state.gasScale*0.92,
                 stepSize: 2
               }
             }

@@ -8,16 +8,21 @@ class LineCompOil extends Component {
     super(props);
 
     this.state = {
-      oilScale: 52
+      oilScale: 0,
+      gasScale: 0
     }
   }
 
-  componentWillMount() {
-    console.log("componentWillMount props.data: ");
-    console.log(this.props.data);
-    // this.setState({
-    //   oilScale: this.props.data[this.props.data.length-1].oilBarrelPriceUSD
-    // })
+  componentWillReceiveProps(nextProps) {
+    console.log("kall í componentWillReceiveProps");
+    if (nextProps.data !== null) {
+      console.log(nextProps.data.avg);
+      console.log(nextProps.data.avggas);
+      this.setState({
+        oilScale: nextProps.data.avg,
+        gasScale: nextProps.avggas
+      });
+    }
   }
 
   createChartData() {
@@ -28,9 +33,9 @@ class LineCompOil extends Component {
     // let oilBarrelPriceISK = [];
     let iceAvg = [];
 
-    if(this.props.data != null) {
-      for (var i = 0; i < this.props.data.length; i++) {
-        let dataset = this.props.data[i];
+    if(this.props.data.data != null) {
+      for (var i = 0; i < this.props.data.data.length; i++) {
+        let dataset = this.props.data.data[i];
         days.push(dataset.date.slice(0, 16));
         oilBarrelPriceUSD.push(dataset.price);
         iceAvg.push(dataset.avggas);
@@ -89,8 +94,8 @@ class LineCompOil extends Component {
               "id": "usd",
               ticks: {
                 fontColor: "#000",
-                max: this.state.oilScale*1.05,
-                min: this.state.oilScale*0.95,
+                max: this.state.oilScale*1.08,
+                min: this.state.oilScale*0.92,
                 stepSize: 2
               }
             },
@@ -106,8 +111,8 @@ class LineCompOil extends Component {
               },
               ticks: {
                 fontColor: "#0000ff",
-                max: 217,
-                min: 177,
+                max: this.state.gasScale*1.08,
+                min: this.state.gasScale*0.92,
                 stepSize: 2
               }
             }

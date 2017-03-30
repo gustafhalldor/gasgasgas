@@ -8,8 +8,15 @@ class Stats extends Component {
     super(props);
 
     this.state = {
-      data95: null,
-      oil: null,
+      data95: {
+        data: "",
+        avg: 1
+      },
+      oil: {
+        data: "",
+        avg: 1,
+        avggas: 1
+      },
       gasDays: 5,
       oilDays: 5
     }
@@ -83,7 +90,7 @@ class Stats extends Component {
               <input type="submit" value="sækja gögn"/>
             </form>
           </div>
-          <LineComponentOil data={this.state.oil} days={this.state.oilDays}/>
+          <LineComponentOil data={this.state.oil} days={this.state.oilDays} avggas={this.state.oil.avggas}/>
         </div>
       </section>
     )

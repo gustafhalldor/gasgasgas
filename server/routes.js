@@ -15,14 +15,30 @@ router.get('/', (req, res, next) => {
 router.get('/getRegularPricesXDaysBack/:days', (req, res, next) => {
   db.getRegularPrices(parseInt(req.params.days, 10))
   .then((data) => {
-    res.send(data);
+    db.getAvgGas(parseInt(req.params.days, 10))
+    .then((data2) => {
+      const obj = {
+        data: data,
+        avg: data2[0].avg
+      }
+      res.send(obj);
+    })
   });
 });
 
+// gets price of oilbarrel as well as the average gas price for those days
 router.get('/getOilBarrelPrice/:days', (req, res, next) => {
   db.getOilPriceAndExchangeRate(parseInt(req.params.days, 10))
   .then((data) => {
-    res.send(data);
+    db.getAvgOilAndGas(parseInt(req.params.days, 10))
+    .then((data2) => {
+      const obj = {
+        data: data,
+        avg: data2[0].avgoil,
+        avggas:data2[0].avggas
+      }
+      res.send(obj);
+    })
   });
 });
 
