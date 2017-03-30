@@ -14,7 +14,6 @@ class LineCompOil extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log("kall í componentWillReceiveProps");
     if (nextProps.data !== null) {
       console.log(nextProps.data.avg);
       console.log(nextProps.data.avggas);

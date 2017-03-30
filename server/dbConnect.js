@@ -75,7 +75,8 @@ function getAvgGas(numDays) {
 function getAvgOilAndGas(numDays) {
   return db.any(`SELECT avg(price) AS avgoil, avg((orkan+orkanx+atlantsolía+ob+olís+skeljungur+n1+dælan)/8) AS avggas
                   FROM brentOil b, gasPricesRegular g
-                  WHERE b.date >= CURRENT_DATE - INTERVAL '$1 DAY'`, [numDays]);
+                  WHERE b.date >= CURRENT_DATE - INTERVAL '$1 DAY'
+                  AND g.date >= CURRENT_DATE - INTERVAL '$1 DAY'`, [numDays]);
 }
 
 // ekki að nota
