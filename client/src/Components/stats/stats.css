@@ -11,3 +11,21 @@
   flex-direction: column;
   align-items: center;
 }
+
+.inputs {
+  margin-top: 1.5em;
+  margin-bottom: 1em;
+}
+
+.inputsExtraMarginTop {
+  margin-top: 3.5em;
+}
+
+input[type=submit] {
+  border-radius: 6px;
+  margin-left: 5px;
+}
+
+.smallerNumberInput {
+  width: 55px;
+}

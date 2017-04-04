@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import styles from './stats.css';
 import LineComponentGas from './lineComponentGas.js';
 import LineComponentOil from './lineComponentOil.js';
+import InfoWindow from './statsInfoWindow.js';
 
 class Stats extends Component {
   constructor(props) {
     super(props);
+
+    const check = localStorage.getItem("noStatsInfoWindow");
 
     this.state = {
       data95: {
@@ -17,8 +20,9 @@ class Stats extends Component {
         avg: 1,
         avggas: 1
       },
-      gasDays: 5,
-      oilDays: 5
+      gasDays: 3,
+      oilDays: 3,
+      showOverlay: !check
     }
   }
 
@@ -71,23 +75,29 @@ class Stats extends Component {
     this.updateOilDaysData(event.target[0].value);
   }
 
+  handleButtonClick( noshow ) {
+    if (noshow === true) {
+      localStorage.setItem("noStatsInfoWindow", true);
+    }
+  }
+
   render() {
     return (
       <section>
+        <InfoWindow onButtonClick={this.handleButtonClick.bind(this)} showOverlay={this.state.showOverlay}/>
         <div className={styles.wrapper}>
           <h1 className={styles.header}>Verðþróun</h1>
-          <p className={styles.paragraphText}>*** WIP ***</p>
-          <div>
+          <div className={styles.inputs}>
             <form onSubmit={this.submitGasForm.bind(this)} >
-              <input type="number" placeholder="dagar" min="0"/>
-              <input type="submit" value="sækja gögn"/>
+              <input type="number" placeholder="dagar" className={styles.smallerNumberInput} min="0"/>
+              <input type="submit" value="Sækja gögn"/>
             </form>
           </div>
           <LineComponentGas data={this.state.data95} days={this.state.gasDays}/>
-          <div>
+          <div className={styles.inputs +' '+ styles.inputsExtraMarginTop}>
             <form onSubmit={this.submitOilForm.bind(this)} >
-              <input type="number" placeholder="dagar" min="0"/>
-              <input type="submit" value="sækja gögn"/>
+              <input type="number" placeholder="dagar" className={styles.smallerNumberInput} min="0"/>
+              <input type="submit" value="Sækja gögn"/>
             </form>
           </div>
           <LineComponentOil data={this.state.oil} days={this.state.oilDays} avggas={this.state.oil.avggas}/>

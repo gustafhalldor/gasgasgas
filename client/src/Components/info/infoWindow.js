@@ -29,12 +29,17 @@ class InfoWindow extends Component {
 
   }
 
+  handleOverlayClick() {
+    let overlay = this.refs.overlay;
+    overlay.style.display = 'none';
+  }
+
   render() {
     if (this.props.showOverlay === false) {
       return <div></div>;
     } else {
       return (
-        <div className={styles.overlay} ref="overlay">
+        <div className={styles.overlay} ref="overlay" onClick={this.handleOverlayClick.bind(this)}>
           <div className={styles.modal}>
             <div className={styles.infoText}>
               <p>Sláðu inn upplýsingar um ökutækið þitt og láttu vefsíðuna reikna út

@@ -80,25 +80,20 @@ function getAvgOilAndGas(numDays) {
 }
 
 // ekki að nota
-function getOilPriceAndExchangeRate(numDays) {
+function getOilPrices(numDays) {
   return db.any(`SELECT * FROM brentOil
                   WHERE date >= CURRENT_DATE - INTERVAL '$1 DAY'
                   ORDER BY id`, [numDays]);
 }
-
-// ekki að nota
-function getRegularPricesAndOil(numDays) {
-  return db.any(`SELECT g.date, orkan, orkanx, atlantsolía, ob, olís, skeljungur, n1, dælan, price
-                  FROM gasPricesRegular g LEFT OUTER JOIN brentOil ON (g.date = brentOil.date)
-                  WHERE g.date >= CURRENT_DATE - INTERVAL '$1 DAY'
-                  ORDER BY g.date`, [numDays]);
-}
-
-// ekki að nota
-function checkIfAlreadySaved(dateCheck) {
-  return db.any(`SELECT * FROM gasPricesRegular
-                  WHERE date = $1`, [dateCheck]);
-}
+//
+// // ekki að nota
+// function getRegularPricesAndOil(numDays) {
+//   return db.any(`SELECT g.date, orkan, orkanx, atlantsolía, ob, olís, skeljungur, n1, dælan, price
+//                   FROM gasPricesRegular g LEFT OUTER JOIN brentOil ON (g.date = brentOil.date)
+//                   WHERE g.date >= CURRENT_DATE - INTERVAL '$1 DAY'
+//                   ORDER BY g.date`, [numDays]);
+// }
+//
 
 
 module.exports = {
@@ -108,7 +103,6 @@ module.exports = {
   getRegularPrices,
   getAvgGas,
   getAvgOilAndGas,
-  getOilPriceAndExchangeRate,
-  getRegularPricesAndOil,
-  checkIfAlreadySaved
+  getOilPrices
+  // getRegularPricesAndOil,
 };

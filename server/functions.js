@@ -19,6 +19,8 @@ function setScrapeTimer() {
     .catch((error) => {
     });
 
+    // not using this for anything, decided to keep the code though in case I
+    // want to do something with exchange rate later
     priceList.exchangeRate()
     .then((result) => {
       scraper.saveExchangeRateToFile(result.data);

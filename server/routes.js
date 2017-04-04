@@ -28,7 +28,7 @@ router.get('/getRegularPricesXDaysBack/:days', (req, res, next) => {
 
 // gets price of oilbarrel as well as the average gas price for those days
 router.get('/getOilBarrelPrice/:days', (req, res, next) => {
-  db.getOilPriceAndExchangeRate(parseInt(req.params.days, 10))
+  db.getOilPrices(parseInt(req.params.days, 10))
   .then((data) => {
     db.getAvgOilAndGas(parseInt(req.params.days, 10))
     .then((data2) => {
