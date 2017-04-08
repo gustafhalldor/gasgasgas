@@ -79,7 +79,6 @@ function getAvgOilAndGas(numDays) {
                   AND g.date >= CURRENT_DATE - INTERVAL '$1 DAY'`, [numDays]);
 }
 
-// ekki að nota
 function getOilPrices(numDays) {
   return db.any(`SELECT * FROM brentOil
                   WHERE date >= CURRENT_DATE - INTERVAL '$1 DAY'

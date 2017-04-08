@@ -57,7 +57,7 @@ class LineCompOil extends Component {
           borderColor: '#000',
           pointRadius: 0,
           pointHitRadius: 5,
-          borderWidth: 2,
+          borderWidth: 2.5,
           pointHoverBorderWidth: 2
         },
         {
@@ -70,7 +70,7 @@ class LineCompOil extends Component {
           borderColor: '#0000ff',
           pointRadius: 0,
           pointHitRadius: 5,
-          borderWidth: 2,
+          borderWidth: 2.5,
           pointHoverBorderWidth: 2
         }
       ]
@@ -87,7 +87,7 @@ class LineCompOil extends Component {
             {
               scaleLabel: {
                 display: true,
-                labelString: "USD"
+                // labelString: "USD"
               },
               position: "left",
               "id": "usd",
@@ -95,13 +95,14 @@ class LineCompOil extends Component {
                 fontColor: "#000",
                 max: this.state.oilScale*1.08,
                 min: this.state.oilScale*0.92,
-                stepSize: 2
+                stepSize: 2,
+                fontStyle: "bold"
               }
             },
             {
               scaleLabel: {
                 display: true,
-                labelString: "ISK"
+                // labelString: "ISK"
               },
               position: "right",
               "id": "isk",
@@ -112,7 +113,8 @@ class LineCompOil extends Component {
                 fontColor: "#0000ff",
                 max: this.state.gasScale*1.08,
                 min: this.state.gasScale*0.92,
-                stepSize: 2
+                stepSize: 2,
+                fontStyle: "bold"
               }
             }
           ],
@@ -125,7 +127,7 @@ class LineCompOil extends Component {
         title: {
             display: true,
             fontSize: 14,
-            text: `Heimsmarkaðsverð olíutunnu seinustu ${this.props.days} daga vs. meðalverð á Íslandi`,
+            text: `Heimsmarkaðsverð olíutunnu seinustu ${this.props.days} daga vs. meðalverð í Reykjavík`,
         },
         maintainAspectRatio: false,
     }

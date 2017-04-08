@@ -1,5 +1,7 @@
 .layout {
-  width: 90%;
+  width: 85%;
   margin: 0 auto;
   font-family: lato;
+  display: flex;
+  justify-content: center;
 }

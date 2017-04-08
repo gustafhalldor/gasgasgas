@@ -1,23 +1,76 @@
-.header {
-  margin-top: 2em;
+.flexcolumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper {
+  composes: flexcolumn;
+  align-items: center;
+  margin-top: 64px;
 }
 
 .paragraphText {
   font-size: 1.3em;
 }
 
-.wrapper {
+.infoDiv {
+  composes: flexcolumn;
+  flex-wrap: wrap;
+  margin-top: 8px;
+  background-color: lightgray;
+  margin: 8px 0;
+  border-radius: 12px;
+  /*box-shadow: 4px 4px 2px #888888;*/
+  /*border: 1px solid #888888;*/
+  /*width: 90%;*/
+}
+
+.button {
+  border-radius: 18px;
+  background-color: #e7e7e7;
+  text-transform: uppercase;
+  font-size: 12px;
+  padding: 5px;
+  width: 32px;
+  height: 32px;
+  margin: 8px 8px 0 0;
+  border-width: 0px;
+  font-weight: bold;
+}
+
+.font12px {
+  font-size: 12px;
+}
+
+.titleFont {
+  font-weight: bold;
+  font-size: 16px;
+  margin: 8px 16px 8px 20px;
+}
+
+.titleAndCloseButton {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
+}
+
+.infoText {
+  align-self: center;
+  composes: flexcolumn;
+  flex-wrap: wrap;
+  margin: 0 16px 8px 16px;
 }
 
 .inputs {
-  margin-top: 1.5em;
-  margin-bottom: 1em;
+  margin-top: 20px;
+  margin-bottom: 16px;
+}
+
+.marginBottom8px {
+  margin-bottom: 8px;
 }
 
 .inputsExtraMarginTop {
+  composes: inputs;
   margin-top: 3.5em;
 }
 

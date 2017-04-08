@@ -39,20 +39,12 @@ class Results extends Component {
   render() {
     const disc = this.calcDiscount();
     const expense = this.calcExpense();
-  //  const gasCost = this.totalGasCost();
-  //  const gasCostWithDiscount = gasCost - disc;
 
     return (
-      <div className={styles.flexrow}>
+      <div className={styles.flexContainer}>
         <span>Afsláttur samtals: {disc.toFixed(2)} kr</span>
         <span>Aksturskostnaður: {expense.toFixed(2)} kr</span>
         <span><b>Ávinningur: {(disc - expense).toFixed(2)} kr</b></span>
-        {/* <br></br>
-        <span>Bensín samtals: {gasCost.toFixed(2)} kr</span>
-        <br></br>
-        <span>Bensín með afslætti: {gasCostWithDiscount.toFixed(2)} kr</span>
-        <br></br>
-        <span>Bensín + kostnaður - afsláttur: {(gasCostWithDiscount + expense).toFixed(2)} kr</span> */}
       </div>
     )
   }

@@ -1,21 +1,19 @@
-.flexcontainer {
+.flexContainer {
   display: flex;
   background-color: darkorange;
   padding: 7px 0;
   color: white;
-}
-
-.flexrow {
-  composes: flexcontainer;
-  flex-direction: row;
+  /*max-width: 972px;*/
   justify-content: space-around;
-  font-size: 1.5em;
-  margin-bottom: 1em;
   flex-wrap: wrap;
+  font-size: 20px;
+  margin-bottom: 16px;
+  margin: 0 auto 16px;
+  border-radius: 4px;
 }
 
 @media only screen and (max-width: 850px){
- .flexrow {
+ .flexContainer {
    flex-direction: column;
    align-items: center;
  }

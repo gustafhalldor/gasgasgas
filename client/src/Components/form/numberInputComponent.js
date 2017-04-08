@@ -25,14 +25,24 @@ class NumberInputComponent extends React.Component {
   }
 
   render() {
+    let durationText = '';
+    if (this.props.duration) {
+      durationText =
+      <div className={styles.noMargin}>
+        u.þ.b. {this.props.duration} min keyrsla
+        </div>;
+    }
 
     return(
       <div className={styles.marginbottom}>
         <label className={styles.flexcontainer}>
           {this.props.text}
-          <input type={this.props.type} value={this.state.value} onChange={this.handleInputChange.bind(this)}/>
+          <input type={this.props.type}
+                 value={this.state.value}
+                 onChange={this.handleInputChange.bind(this)}
+                 className={styles.inputFieldTopMargin}/>
         </label>
-        {this.props.duration ? 'u.þ.b. '+this.props.duration + ' min keyrsla' : ''}
+        {durationText}
       </div>
     )
   }

@@ -175,7 +175,8 @@ class LineCompGas extends Component {
               ticks: {
                 max: this.state.gasScale*1.08,
                 min: this.state.gasScale*0.92,
-                stepSize: 2
+                stepSize: 2,
+                fontStyle: "bold"
               }
             }
           ],

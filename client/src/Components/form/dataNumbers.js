@@ -1,24 +1,24 @@
 const data = [
   {
-    "text": "Afsláttur við dælu",
+    "text": "Afsláttur við dælu:",
     "name": "discount",
     "type": "number",
     "extra": "required"
   },
   {
-    "text": "Lítrar keyptir",
+    "text": "Lítrar keyptir:",
     "name": "litersBought",
     "type": "number",
     "extra": "required"
   },
   {
-    "text": "Eyðsla(L/100km)",
+    "text": "Eyðsla(L/100km):",
     "name": "milage",
     "type": "number",
     "extra": "required"
   },
   {
-    "text": "KM eknir að bensínstöð",
+    "text": "KM eknir að bensínstöð:",
     "name": "distance",
     "type": "number",
     "extra": "required"

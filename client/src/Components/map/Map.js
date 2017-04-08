@@ -302,12 +302,12 @@ class Map extends Component {
     let validateGasStation = '';
     let howToUse = '';
     if(this.state.selectedMarker === null) {
-      validateGasStation = <b>Veldu bensínstöð til að fá verð til að notast við.</b>;
+      validateGasStation = <b>Veldu bensínstöð á kortinu til að fá verð til að notast við.</b>;
       howToUse = '- Veldu bensínstöð sem þú hyggst versla við'
     } else {
       validateGasStation =
           <div className={styles.flexcontainer}>
-            <span><b>95 oktan:</b><em> {this.state.selectedMarker.regularGas}</em></span>
+            <span className={styles.marginRight8px}><b>95 oktan:</b><em> {this.state.selectedMarker.regularGas}</em></span>
             <span><b>Diesel:</b><em> {this.state.selectedMarker.diesel}</em></span>
           </div>;
     }
@@ -334,7 +334,7 @@ class Map extends Component {
         <input ref="search_box" type="text" placeholder="Leita..." className={styles.searchbox}/>
         <div className={styles.mapStyle} ref="map" >I should be a map!</div>
         <div className={styles.flexcolumn}>
-          <button onClick={this.buttonClickHandler.bind(this)} className={buttonStatusClass}>reikna fjarlægð</button>
+          <button onClick={this.buttonClickHandler.bind(this)} className={buttonStatusClass}>Reikna fjarlægð</button>
           <span className={styles.largerfont}>{useCalcText}</span>
           <span>{validateUserMarker}</span>
           <span>{howToUse}</span>

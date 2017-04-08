@@ -1,0 +1,16 @@
+.navigation {
+
+}
+
+@media only screen and (min-width: 768px) {
+  .navigation {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .navigation {
+    display: block;
+  }
+}

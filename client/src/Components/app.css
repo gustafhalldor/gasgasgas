@@ -1,24 +1,84 @@
-/*.border {
-  border: 1px solid black;
-}*/
-
-.flexcontainer {
-  display: flex;
-}
-
-.formandmap {
-  composes: flexcontainer;
-  margin-top: 5em;
-  flex-direction: row;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  margin-bottom: 1em;
-  background-color: #ffb732;
-  padding-top: 0.5em;
-}
 
 .flexcolumn {
-  composes: flexcontainer;
+  display: flex;
   flex-direction: column;
+}
 
+.infoAndFormAndMap {
+  composes: flexcolumn;
+  flex-wrap: wrap;
+  margin-top: 64px;
+  margin-bottom: 16px;
+  background-color: #ffb732;
+  border-radius: 8px;
+}
+
+.formandmapDiv {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-self: center;
+  justify-content: center;
+}
+
+.margin {
+  margin: 0 auto;
+}
+
+.infoDiv {
+  composes: flexcolumn;
+  flex-wrap: wrap;
+  margin-top: 8px;
+  background-color: darkorange;
+  margin: 8px 24px 0 24px;
+  border-radius: 12px;
+  /*box-shadow: 4px 4px 2px #888888;*/
+  /*border: 1px solid #888888;*/
+}
+
+.button {
+  border-radius: 18px;
+  background-color: #e7e7e7;
+  text-transform: uppercase;
+  font-size: 12px;
+  padding: 5px;
+  width: 32px;
+  height: 32px;
+  margin: 8px 8px 0 0;
+  border-width: 0px;
+  font-weight: bold;
+}
+
+.titleFont {
+  font-weight: bold;
+  font-size: 16px;
+  margin: 8px 16px 8px 20px;
+}
+
+.titleAndCloseButton {
+  display: flex;
+  justify-content: space-between;
+}
+
+.infoText {
+  align-self: center;
+  margin-right: 8px;
+  margin-bottom: 4px;
+}
+
+.leftPadding20px {
+  padding-left: 20px;
+  margin-bottom: 0;
+}
+
+.centerFlexItem {
+  align-self: center;
+  font-size: 12px;
+  margin-bottom: 16px;
+}
+
+@media only screen and (max-width: 650px) {
+  .button {
+    width: 40px;
+  }
 }

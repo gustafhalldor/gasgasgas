@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import NavBarItem from './navbarItem.js';
 import navData from './navdata';
+import styles from './navigation.css';
 
 class Navbar extends Component {
   generateItem(item, i) {
@@ -10,8 +11,8 @@ class Navbar extends Component {
   render() {
     const items = navData.map(this.generateItem.bind(this));
     return (
-      <nav className="navbar navbar-default navbar-fixed-top">
-        <div className="container">
+      <nav className="navbar-default navbar-fixed-top">
+        <div className={styles.navigation}>
           <div>
             <button data-toggle="collapse" data-target="#navbar" className="navbar-toggle collapsed">
               <span className="sr-only">Toggle navigation</span>

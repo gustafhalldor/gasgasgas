@@ -4,6 +4,7 @@ import Map from './map/Map.js';
 import Results from './results/Results.js';
 import InfoWindow from './info/infoWindow.js';
 import styles from './app.css';
+import { Link } from 'react-router';
 
 // Google Maps API key: AIzaSyAO0bYbvQc-LYwluOSaD2wDURsxohJ8AB0
 
@@ -56,17 +57,48 @@ class App extends Component {
     }
   }
 
+  buttonHideInfo() {
+    let infoDiv = this.refs.infoDiv;
+    infoDiv.style.display = 'none';
+  }
+
   render() {
     return (
       <div className={styles.flexcolumn}>
-        <InfoWindow onButtonClick={this.handleButtonClick.bind(this)} showOverlay={this.state.showOverlay}/>
-        <div className={styles.formandmap}>
-          <Map onMarkerClick={this.handleMarkerClick.bind(this)} parentCB={this.getDistAndDuration.bind(this)}/>
-          <Form   onSubmit={this.handleFormData.bind(this)}
-                  distance={this.state.distance}
-                  duration={this.state.duration}/>
+        <div className={styles.margin}>
+          <InfoWindow onButtonClick={this.handleButtonClick.bind(this)} showOverlay={this.state.showOverlay}/>
+          <div className={styles.infoAndFormAndMap}>
+            <div className={styles.infoDiv} ref="infoDiv">
+              <div className={styles.titleAndCloseButton}>
+                <div></div>
+                <h1 className={styles.titleFont}>
+                  Velkomin á afsláttarreiknivél fyrir bensín á höfuðborgarsvæðinu.
+                </h1>
+                <button className={styles.button} onClick={this.buttonHideInfo.bind(this)}>X</button>
+              </div>
+              <div className={styles.infoText}>
+                <ul className={styles.leftPadding20px}>
+                  <li>Fyrsta mál á dagskrá er að velja bensínstöð á kortinu (fyrir neðan) svo vélin viti hvaða verð hún á að nota.</li>
+                  <li>Fylltu næst inn nauðsynlegar upplýsingar.</li>
+                  <ul className={styles.leftPadding20px}>
+                    <li>Athugaðu að hægt er að láta kortið reikna út fjarlægðina frá þér til bensínstöðvar.</li>
+                  </ul>
+                  <li>Smelltu svo á "Reikna" takkann.</li>
+                </ul>
+                </div>
+                <span className={styles.centerFlexItem}>Tjekkaðu líka á <Link to="/statistics">Verðþróun</Link> hluta síðunnar!</span>
+            </div>
+            <div>
+              <div className={styles.formandmapDiv}>
+                <Map onMarkerClick={this.handleMarkerClick.bind(this)} parentCB={this.getDistAndDuration.bind(this)}/>
+                <Form   onSubmit={this.handleFormData.bind(this)}
+                        distance={this.state.distance}
+                        duration={this.state.duration}/>
+              </div>
+            </div>
+          </div>
+          <Results data={this.state}/>
         </div>
-        <Results data={this.state}/>
       </div>
     );
   }
