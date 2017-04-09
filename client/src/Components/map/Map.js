@@ -40,7 +40,8 @@ class Map extends Component {
   componentDidMount() {
     this.map = new google.maps.Map(this.refs.map, {
       center: this.props.defaultPosition,
-      zoom: 12
+      zoom: 12,
+      disableDefaultUI: true
     });
 
     // Create the search box and link it to the UI element.

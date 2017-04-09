@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Form from './form/Form.js';
 import Map from './map/Map.js';
 import Results from './results/Results.js';
-import InfoWindow from './info/infoWindow.js';
 import styles from './app.css';
 import { Link } from 'react-router';
 
@@ -12,8 +11,6 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    const check = localStorage.getItem("noInfoWindow");
-
     this.state = {
       milage: 0,
       discount: 0,
@@ -22,8 +19,7 @@ class App extends Component {
       duration: 0,
       typeOfGas: '95 oktan',
       regularPrice: 0,
-      dieselPrice: 0,
-      showOverlay: !check
+      dieselPrice: 0
     }
   }
 
@@ -51,12 +47,6 @@ class App extends Component {
     })
   }
 
-  handleButtonClick( noshow ) {
-    if (noshow === true) {
-      localStorage.setItem("noInfoWindow", true);
-    }
-  }
-
   buttonHideInfo() {
     let infoDiv = this.refs.infoDiv;
     infoDiv.style.display = 'none';
@@ -66,7 +56,6 @@ class App extends Component {
     return (
       <div className={styles.flexcolumn}>
         <div className={styles.margin}>
-          <InfoWindow onButtonClick={this.handleButtonClick.bind(this)} showOverlay={this.state.showOverlay}/>
           <div className={styles.infoAndFormAndMap}>
             <div className={styles.infoDiv} ref="infoDiv">
               <div className={styles.titleAndCloseButton}>

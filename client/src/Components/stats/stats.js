@@ -2,14 +2,11 @@ import React, { Component } from 'react';
 import styles from './stats.css';
 import LineComponentGas from './lineComponentGas.js';
 import LineComponentOil from './lineComponentOil.js';
-import InfoWindow from './statsInfoWindow.js';
 import { Link } from 'react-router';
 
 class Stats extends Component {
   constructor(props) {
     super(props);
-
-    const check = localStorage.getItem("noStatsInfoWindow");
 
     this.state = {
       data95: {
@@ -22,8 +19,7 @@ class Stats extends Component {
         avggas: 1
       },
       gasDays: 3,
-      oilDays: 3,
-      showOverlay: !check
+      oilDays: 3
     }
   }
 
@@ -76,12 +72,6 @@ class Stats extends Component {
     this.updateOilDaysData(event.target[0].value);
   }
 
-  handleButtonClick( noshow ) {
-    if (noshow === true) {
-      localStorage.setItem("noStatsInfoWindow", true);
-    }
-  }
-
   buttonHideInfo() {
     let infoDiv = this.refs.infoDiv;
     infoDiv.style.display = 'none';
@@ -90,7 +80,6 @@ class Stats extends Component {
   render() {
     return (
       <section>
-        <InfoWindow onButtonClick={this.handleButtonClick.bind(this)} showOverlay={this.state.showOverlay}/>
         <div className={styles.wrapper}>
           <div className={styles.infoDiv} ref="infoDiv">
             <div className={styles.titleAndCloseButton}>
