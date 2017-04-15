@@ -15,8 +15,6 @@ class LineCompOil extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.data !== null) {
-      console.log(nextProps.data.avg);
-      console.log(nextProps.data.avggas);
       this.setState({
         oilScale: nextProps.data.avg,
         gasScale: nextProps.avggas
@@ -58,7 +56,8 @@ class LineCompOil extends Component {
           pointRadius: 0,
           pointHitRadius: 5,
           borderWidth: 2.5,
-          pointHoverBorderWidth: 2
+          pointHoverBorderWidth: 2,
+          spanGaps: true
         },
         {
           data: iceAvg,

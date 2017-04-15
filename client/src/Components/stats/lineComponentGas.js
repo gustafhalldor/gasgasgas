@@ -167,8 +167,8 @@ class LineCompGas extends Component {
           yAxes: [
             {
               scaleLabel: {
-                display: true,
-                labelString: "ISK á líter"
+                display: true
+                //labelString: "ISK á líter"
               },
               position: "left",
               "id": "regular",

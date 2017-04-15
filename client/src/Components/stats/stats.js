@@ -74,7 +74,8 @@ class Stats extends Component {
 
   buttonHideInfo() {
     let infoDiv = this.refs.infoDiv;
-    infoDiv.style.display = 'none';
+    infoDiv.style.opacity = '0';
+    setTimeout(function(){infoDiv.parentNode.removeChild(infoDiv);}, 1000);
   }
 
   render() {
@@ -85,7 +86,7 @@ class Stats extends Component {
             <div className={styles.titleAndCloseButton}>
               <div></div>
               <h1 className={styles.titleFont}>
-                Hér gefur að líta verðþróun bensíns/olíu í 2 línuritum.
+                Verðþróun bensíns/olíu í 2 línuritum
               </h1>
               <button className={styles.button} onClick={this.buttonHideInfo.bind(this)}>X</button>
             </div>

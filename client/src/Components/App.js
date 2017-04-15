@@ -49,7 +49,8 @@ class App extends Component {
 
   buttonHideInfo() {
     let infoDiv = this.refs.infoDiv;
-    infoDiv.style.display = 'none';
+    infoDiv.style.opacity = '0';
+    setTimeout(function(){infoDiv.parentNode.removeChild(infoDiv);}, 1000);
   }
 
   render() {
@@ -61,7 +62,7 @@ class App extends Component {
               <div className={styles.titleAndCloseButton}>
                 <div></div>
                 <h1 className={styles.titleFont}>
-                  Velkomin á afsláttarreiknivél fyrir bensín á höfuðborgarsvæðinu.
+                  Velkomin/n á afsláttarreiknivél fyrir bensín á höfuðborgarsvæðinu.
                 </h1>
                 <button className={styles.button} onClick={this.buttonHideInfo.bind(this)}>X</button>
               </div>

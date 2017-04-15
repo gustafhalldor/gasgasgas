@@ -27,13 +27,15 @@
 
 .infoDiv {
   composes: flexcolumn;
+  font-size: 16px;
   flex-wrap: wrap;
   margin-top: 8px;
   background-color: darkorange;
   margin: 8px 24px 0 24px;
   border-radius: 12px;
-  /*box-shadow: 4px 4px 2px #888888;*/
-  /*border: 1px solid #888888;*/
+  opacity: 1;
+  -webkit-transition: opacity 1000ms linear;
+  transition: opacity 1000ms linear;
 }
 
 .button {

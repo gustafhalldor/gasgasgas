@@ -7,22 +7,20 @@
   composes: flexcolumn;
   align-items: center;
   margin-top: 64px;
-}
-
-.paragraphText {
-  font-size: 1.3em;
+  margin-bottom: 16px;
 }
 
 .infoDiv {
   composes: flexcolumn;
+  font-size: 16px;
   flex-wrap: wrap;
   margin-top: 8px;
   background-color: lightgray;
-  margin: 8px 0;
   border-radius: 12px;
-  /*box-shadow: 4px 4px 2px #888888;*/
-  /*border: 1px solid #888888;*/
-  /*width: 90%;*/
+  margin: 8px 24px 0 24px;
+  opacity: 1;
+  -webkit-transition: opacity 1000ms linear;
+  transition: opacity 1000ms linear;
 }
 
 .button {
@@ -71,12 +69,12 @@
 
 .inputsExtraMarginTop {
   composes: inputs;
-  margin-top: 3.5em;
+  margin-top: 32px;
 }
 
 input[type=submit] {
   border-radius: 6px;
-  margin-left: 5px;
+  margin-left: 8px;
 }
 
 .smallerNumberInput {
