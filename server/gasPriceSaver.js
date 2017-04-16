@@ -12,12 +12,13 @@ function initGasPriceSaver() {
   const file = './server/data/data95.json';
   const file2 = './server/data/crudeOil.json';
   let regularGasObject = {};
+  let oilObject = {};
   scheduler.scheduleJob(rule, () => {
     jsonfile.readFile(file, function(err, data) {
       regularGasObject = getRegularPrice(data);
       db.saveRegular(regularGasObject);
       jsonfile.readFile(file2, function(err, data2) {
-        let oilObject = getOilPrice(data2);
+        oilObject = getOilPrice(data2);
         oilObject.avg = data.avg;
         db.saveOil(oilObject);
       })
@@ -29,12 +30,20 @@ function getOilPrice(dataOil) {
   let object = {};
 
   object.date = getDateTime(); //yyyy-mm-dd hh:mm
-  object.price = dataOil.price;
   object.exchangeRate = dataOil.exchangeRate;
 
-  let string = dataOil.percentage.split("%");
-  object.percentage = string[0];
+  if (dataOil.price === "") {
+    object.price = null;
+  } else {
+    object.price = dataOil.price;
+  }
 
+  if (dataOil.percentage === "") {
+    object.percentage = null;
+  } else {
+    let string = dataOil.percentage.split("%");
+    object.percentage = string[0];
+  }
   return object;
 }
 

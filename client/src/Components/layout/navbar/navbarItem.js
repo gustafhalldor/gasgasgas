@@ -26,10 +26,22 @@ class NavbarItem extends React.Component {
     return content;
   }
 
+  // This collapses the expanded navbar after the user has clicked on a
+  // navigation link.
+  handleClick() {
+    let el = document.querySelector('.navbar-toggle');
+    el.className += " collapsed";
+    el.setAttribute("aria-expanded", false);
+
+    let el2 = document.querySelector('#navbar');
+    el2.classList.remove("in");
+    el2.setAttribute("aria-expanded", false);
+  }
+
   render() {
     const content = this.generateContent();
     return (
-      <li className={styles.fontsize}>
+      <li className={styles.fontsize} onClick={this.handleClick}>
         {content}
       </li>
     );

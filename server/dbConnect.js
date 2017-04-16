@@ -47,6 +47,7 @@ function saveRegular(obj) {
   })
   .catch((error) => {
     console.log("Unable to save Regular to db");
+    console.log("error er: "+error);
   });
 }
 
@@ -57,6 +58,7 @@ function saveOil(obj) {
   })
   .catch((error) => {
     console.log("Unable to save Oil to db");
+    console.log("error er: "+error);
   });
 }
 
