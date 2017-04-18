@@ -38,9 +38,6 @@ class LineCompOil extends Component {
         iceAvg.push(dataset.avggas);
         // let iskPrice = (dataset.price*dataset.rate);
         // oilBarrelPriceISK.push(iskPrice);
-        if (i === this.props.data.lengh-1) {
-
-        }
       }
 
       chartData.labels = days;

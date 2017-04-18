@@ -11,8 +11,8 @@ class About extends Component {
       <section>
         <h1 className={styles.header}>um síðuna</h1>
         <General />
-        <Technical />
         <Stats />
+        <Technical />
       </section>
     )
   }

@@ -5,8 +5,8 @@ class Stats extends Component {
   render() {
     return (
       <div className={styles.paragraphText}>
-        <h2>Tölfræði</h2>
-        <p>  
+        <h2>Verðþróun</h2>
+        <p>
            *** WIP ***
         </p>
       </div>

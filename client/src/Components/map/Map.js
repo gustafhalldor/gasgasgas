@@ -14,19 +14,19 @@ class Map extends Component {
   constructor(props) {
     super(props);
 
-    let thisStatObject = this;
+    let thisMapObject = this;
     fetch(`http://localhost:3001/api/get95price/`)
         .then(response => {
           return response.json();
         }).then(function(response) {
-          thisStatObject.setState({data95: response});
+          thisMapObject.setState({data95: response});
         });
 
     fetch(`http://localhost:3001/api/getDieselPrice/`)
         .then(response => {
           return response.json();
         }).then(function(response) {
-          thisStatObject.setState({dataDiesel: response});
+          thisMapObject.setState({dataDiesel: response});
         });
 
     this.state = {
