@@ -95,12 +95,23 @@ function scrapeGas(html, type95) {
 }
 
 function scrapeBrentOil(html) {
+  let file3 = './server/data/html.html';
+  jsonfile.writeFile(file3, html, (err) => {
+    //console.error(err)
+  });
   const $$ = cheerio.load(html);
   let oilObject = {};
   let file = './server/data/crudeOil.json';
   let file2 = './server/data/exchangeRate.json';
-  oilObject.price = $$('#ctl00_ContentPlaceMain1_LabelBuyPriceBig').text();
-  oilObject.percentage = $$('#ctl00_ContentPlaceMain1_LabelPercentage').text();
+
+  let quoteBar = $$('.mod-tearsheet-overview__quote__bar');
+  oilObject.price = quoteBar.children().first().children().last().text();
+
+  let percentage = quoteBar.children().first().next().children().last().text();
+  // Doing some string manipulation to retrieve only the percentage part
+  let string = percentage.split("/");
+  let string2 = string[1].slice(1, string[1].length).split("%");
+  oilObject.percentage = string2[0];
 
   jsonfile.readFile(file2, function(err, data) {
     oilObject.exchangeRate = data;

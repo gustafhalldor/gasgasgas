@@ -2,7 +2,7 @@ const axios = require('axios');
 
 const baseURL = (process.env.baseURL || 'http://bensinverd.is/gsmbensin_web.php');
 const instance = axios.create({ baseURL });
-const instance2 = axios.create({ baseURL: `https://www.plus500.com/Instruments/EB` });
+const instance2 = axios.create({ baseURL: `https://markets.ft.com/data/commodities/tearsheet/summary?c=Brent+Crude+Oil` });
 const instance3 = axios.create({ baseURL: `https://www.apis.is//currency/lb` });
 
 /**
@@ -15,7 +15,7 @@ function gasPrices() {
 }
 
 function crudeOilPrice() {
-  return instance2.get(`https://www.plus500.com/Instruments/EB`);
+  return instance2.get(`https://markets.ft.com/data/commodities/tearsheet/summary?c=Brent+Crude+Oil`);
 }
 
 function exchangeRate() {

@@ -88,7 +88,10 @@ class Stats extends Component {
               <h1 className={styles.titleFont}>
                 Verðþróun bensíns/olíu í 2 línuritum
               </h1>
-              <button className={styles.button} onClick={this.buttonHideInfo.bind(this)}>X</button>
+              <button className={styles.button} onClick={this.buttonHideInfo.bind(this)} value='Loka upplýsingaglugga'>
+                X
+                <span className="sr-only">Takki til að loka upplýsingaglugga</span>
+              </button>
             </div>
             <div className={styles.infoText}>
               <div className={styles.marginBottom8px}>Á efra línuritinu má sjá þróun bensínverðs á höfuðborgarsvæðinu

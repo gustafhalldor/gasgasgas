@@ -41,8 +41,7 @@ function getOilPrice(dataOil) {
   if (dataOil.percentage === "") {
     object.percentage = null;
   } else {
-    let string = dataOil.percentage.split("%");
-    object.percentage = string[0];
+    object.percentage = dataOil.percentage;
   }
   return object;
 }

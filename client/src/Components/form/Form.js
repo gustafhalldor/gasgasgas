@@ -36,6 +36,7 @@ class Form extends Component {
 
     return (
       <form onSubmit={this.submitForm.bind(this)} className={styles.flexcontainer}>
+        <span className="sr-only">Atriði sem þarf að fylla inn</span>
         <NumberInputs distance={this.props.distance} duration={this.props.duration}/>
         <RadioInputs onRadioChange={this.handleRadioInputChange.bind(this)}/>
         <input type="submit" value="reikna" className={styles.input}/>

@@ -64,7 +64,10 @@ class App extends Component {
                 <h1 className={styles.titleFont}>
                   Velkomin/n á afsláttarreiknivél fyrir bensín á höfuðborgarsvæðinu.
                 </h1>
-                <button className={styles.button} onClick={this.buttonHideInfo.bind(this)}>X</button>
+                <button className={styles.button} onClick={this.buttonHideInfo.bind(this)} value='Loka upplýsingaglugga'>
+                  X
+                  <span className="sr-only">Takki til að loka upplýsingaglugga</span>
+                </button>
               </div>
               <div className={styles.infoText}>
                 <ul className={styles.leftPadding20px}>
