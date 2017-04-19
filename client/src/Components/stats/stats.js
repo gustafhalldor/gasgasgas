@@ -100,7 +100,7 @@ class Stats extends Component {
               <div className={styles.marginBottom8px}>
                 Neðra línuritið sýnir meðalverð 95 oktana bensíns á höfuðborgarsvæðinu á móti heimsmarkaðsverði
                 Brent olíutunnu seinustu x daga. <br/>
-                <span className={styles.font12px}>Lesa má nánar um Brent olíutunnu á svæðinu <Link to="/about">Um Síðuna</Link></span>
+                <span>Lesa má nánar um Brent olíutunnu á svæðinu <Link to="/about">Um Síðuna</Link></span>
               </div>
               <div className={styles.marginBottom8px}>
                 Hægt er að fela línur með því að velja úr listanum fyrir ofan þau.

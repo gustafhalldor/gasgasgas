@@ -1,6 +1,6 @@
 .mapBorderAndMargin {
   border: '1px solid black';
-  margin-bottom: 8px;
+  margin-bottom: 0.5em;
 }
 
 .mapStyle {
@@ -10,11 +10,11 @@
 }
 
 .leftSide {
-  margin-top: 8px;
+  margin-top: 0.5em;
   display: flex;
   flex-direction: column;
-  margin-left: 24px;
-  margin-right: 16px;
+  margin-left: 1.5em;
+  margin-right: 1em;
 }
 
 .searchbox {
@@ -33,7 +33,7 @@
 .flexcolumn {
   display: flex;
   flex-direction: column;
-  margin-bottom: 16px;
+  margin-bottom: 1em;
 }
 
 .button {
@@ -52,16 +52,16 @@
 }
 
 .slightlylargerfont {
-  font-size: 16px;
-  margin-bottom: 8px;
+  font-size: 1em;
+  margin-bottom: 0.5em;
 }
 
 .marginRight8px {
-  margin-right: 8px;
+  margin-right: 0.5em;
 }
 
 .largerfont {
-  font-size: 20px;
+  font-size: 1.25em;
   margin-top: 3px;
 }
 

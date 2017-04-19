@@ -7,10 +7,10 @@
 .infoAndFormAndMap {
   composes: flexcolumn;
   flex-wrap: wrap;
-  margin-top: 64px;
-  margin-bottom: 16px;
+  margin-top: 4em;
+  margin-bottom: 1em;
   background-color: #ffb732;
-  border-radius: 8px;
+  border-radius: 0.5em;
 }
 
 .formandmapDiv {
@@ -27,12 +27,12 @@
 
 .infoDiv {
   composes: flexcolumn;
-  font-size: 16px;
+  font-size: 1em;
   flex-wrap: wrap;
-  margin-top: 8px;
+  margin-top: 0.5em;
   background-color: darkorange;
-  margin: 8px 24px 0 24px;
-  border-radius: 12px;
+  margin: 0.5em 1.5em 0 1.5em;
+  border-radius: 0.75em;
   opacity: 1;
   -webkit-transition: opacity 1000ms linear;
   transition: opacity 1000ms linear;
@@ -42,19 +42,19 @@
   border-radius: 18px;
   background-color: #fafafa;
   text-transform: uppercase;
-  font-size: 12px;
-  padding: 5px;
-  width: 32px;
-  height: 32px;
-  margin: 8px 8px 0 0;
+  font-size: 1em;
+  padding: 0.25em;
+  width: 2em;
+  height: 2em;
+  margin: 0.5em 0.5em 0 0;
   border-width: 0px;
   font-weight: bold;
 }
 
 .titleFont {
   font-weight: bold;
-  font-size: 16px;
-  margin: 8px 16px 8px 20px;
+  font-size: 1em;
+  margin: 0.5em 1em 0.5em 1.25em;
 }
 
 .titleAndCloseButton {
@@ -64,23 +64,22 @@
 
 .infoText {
   align-self: center;
-  margin-right: 8px;
-  margin-bottom: 4px;
+  margin-right: 0.5em;
+  margin-bottom: 0.25em;
 }
 
 .leftPadding20px {
-  padding-left: 20px;
+  padding-left: 1.25em;
   margin-bottom: 0;
 }
 
 .centerFlexItem {
   align-self: center;
-  font-size: 12px;
-  margin-bottom: 16px;
+  margin-bottom: 1em;
 }
 
 @media only screen and (max-width: 650px) {
   .button {
-    width: 40px;
+    width: 2.5em;
   }
 }

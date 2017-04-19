@@ -1,15 +1,15 @@
 .flexContainer {
   display: flex;
   background-color: darkorange;
-  padding: 7px 0;
+  padding: 0.5em 0;
   color: white;
   /*max-width: 972px;*/
   justify-content: space-around;
   flex-wrap: wrap;
-  font-size: 20px;
-  margin-bottom: 16px;
-  margin: 0 auto 16px;
-  border-radius: 4px;
+  font-size: 1.25em;
+  margin-bottom: 1em;
+  margin: 0 auto 1em;
+  border-radius: 0.25em;
 }
 
 @media only screen and (max-width: 850px){

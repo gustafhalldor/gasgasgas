@@ -6,18 +6,18 @@
 .wrapper {
   composes: flexcolumn;
   align-items: center;
-  margin-top: 64px;
-  margin-bottom: 16px;
+  margin-top: 4em;
+  margin-bottom: 1em;
 }
 
 .infoDiv {
   composes: flexcolumn;
-  font-size: 16px;
+  font-size: 1em;
   flex-wrap: wrap;
-  margin-top: 8px;
+  margin-top: 0.5em;
   background-color: lightgray;
-  border-radius: 12px;
-  margin: 8px 24px 0 24px;
+  border-radius: 0.75em;
+  margin: 0.5em 1.5em 0 1.5em;
   opacity: 1;
   -webkit-transition: opacity 1000ms linear;
   transition: opacity 1000ms linear;
@@ -27,23 +27,23 @@
   border-radius: 18px;
   background-color: #fafafa;
   text-transform: uppercase;
-  font-size: 12px;
-  padding: 5px;
-  width: 32px;
-  height: 32px;
-  margin: 8px 8px 0 0;
+  font-size: 1em;
+  padding: 0.25em;
+  width: 2em;
+  height: 2em;
+  margin: 0.5em 0.5em 0 0;
   border-width: 0px;
   font-weight: bold;
 }
 
 .font12px {
-  font-size: 12px;
+  font-size: 1em;
 }
 
 .titleFont {
   font-weight: bold;
-  font-size: 16px;
-  margin: 8px 16px 8px 20px;
+  font-size: 1em;
+  margin: 0.5em 1em 0.5em 1.25em;
 }
 
 .titleAndCloseButton {
@@ -55,28 +55,28 @@
   align-self: center;
   composes: flexcolumn;
   flex-wrap: wrap;
-  margin: 0 16px 8px 16px;
+  margin: 0 1em 0.5em 1em;
 }
 
 .inputs {
-  margin-top: 20px;
-  margin-bottom: 16px;
+  margin-top: 1.25em;
+  margin-bottom: 1em;
 }
 
 .marginBottom8px {
-  margin-bottom: 8px;
+  margin-bottom: 0.5em;
 }
 
 .inputsExtraMarginTop {
   composes: inputs;
-  margin-top: 32px;
+  margin-top: 2em;
 }
 
 input[type=submit] {
   border-radius: 6px;
-  margin-left: 8px;
+  margin-left: 0.5em;
 }
 
 .smallerNumberInput {
-  width: 55px;
+  width: 4em;
 }

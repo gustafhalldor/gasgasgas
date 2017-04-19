@@ -1,11 +1,17 @@
 const React = require('react');
-import {Link} from 'react-router';
+import {Link, IndexLink} from 'react-router';
 
 class NavbarLink extends React.Component {
   render() {
-    return (
-      <Link to={this.props.url}>{this.props.text}</Link>
-    );
+    if (this.props.url === "/") {
+      return (
+        <IndexLink to={this.props.url} activeStyle={{ color: 'black' }}>{this.props.text}</IndexLink>
+      );
+    } else {
+      return (
+        <Link to={this.props.url} activeStyle={{ color: 'black' }}>{this.props.text}</Link>
+      );
+    }
   }
 }
 
