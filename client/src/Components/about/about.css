@@ -1,8 +1,26 @@
 .header {
   margin-top: 2em;
+  margin-bottom: 1em;
   text-transform: uppercase;
+  align-self: center;
+}
+
+.flexColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper {
+  composes: flexColumn;
+  width: 85%;
+  margin: 0 1.5em 1.5em 1.5em;
 }
 
 .paragraphText {
-  font-size: 1em;
+  font-size: 1.25em;
+  composes: flexColumn;
+}
+
+.alignSelfCenter {
+  align-self: center;
 }

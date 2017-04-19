@@ -8,7 +8,7 @@ import Stats from './stats.js';
 class About extends Component {
   render() {
     return (
-      <section>
+      <section className={styles.wrapper}>
         <h1 className={styles.header}>um síðuna</h1>
         <General />
         <Stats />

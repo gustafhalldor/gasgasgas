@@ -7,16 +7,21 @@ class General extends Component {
       <div className={styles.paragraphText}>
         <p>
           Þessi síða var unnin sem lokaverkefni (B.Sc.) í almennri tölvunarfræði við Háskóla Íslands, vorið 2017,
-          af Gústafi Halldóri Gústafssyni.<br/>
+          af Gústafi Halldóri Gústafssyni.
+        </p>
+        <p>
           Leiðbeinandi var Ólafur Sverrir Kjartansson.
         </p>
-        <h2>Virkni</h2>
+        <h2 className={styles.alignSelfCenter}>Hugmynd</h2>
         <p>
-          Hefur þig einhverntíma langað til að vita hversu mikið raunverulega þú ert að spara með því að fara
-          út og taka bensín á afsláttardögum olíufélaganna? Þá er þessi síða eitthvað fyrir þig! Langar þig til að fylgjast
-          með meðalverði allra olíufélaganna á Íslandi í einu grafi? Þá er þessi síða eitthvað fyrir þig! Langar þig til að sjá hvernig
-          meðaleldsneytisverð á Íslandi er í samanburði við heimsmarkaðsverð olíu? Þá er þessi síða eitthvað fyrir þig!
+          Það sem mig langaði að athuga var hvort bensíntaka á sérstökum afsláttardögum olíufélaganna borgi sig.
+          Maður eyðir tíma í að gera sér sérstaka ferð á bensínstöðina og að sjálfsögðu eyðir maður bensíni í það um leið.
+          Með reiknivélinni er hægt að sjá niðurstöðuna á einfaldan hátt. Mig langaði einnig til að safna upplýsingum um
+          verðþróun bensínverðs og sjá þær grafískt.
         </p>
+        {/* <p>
+          Bensínverðið sem notast er við til að reikna út eyðsluna er núverandi bensínverð.
+        </p> */}
       </div>
     )
   }
