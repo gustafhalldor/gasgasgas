@@ -4,7 +4,7 @@
 - Það verður að vera til local PostgreSQL gagnagrunnur sem heitir 'gasgasgas'.
 - Node.js verður að vera installað á tölvunni þinni.
 - Eftir þú ert búinn að ná í verkefnið, þá verðurðu að breyta línu 4 í dbConnect.js skjalinu:
-- - 'postgres://postgres:[ÞITT PASSWORD]@localhost:5432/gasgasgas'
+- - 'postgres://[ÞITT NOTENDANAFN]:[ÞITT PASSWORD]@localhost:5432/gasgasgas'
 
 ## Install:
 Opnaðu command line og vertu inní directory-inu sem þú valdir. Gerðu svo:
