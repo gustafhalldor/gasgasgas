@@ -10,9 +10,9 @@ class Stats extends Component {
           Gott er að hafa eftirfarandi punkta bakvið eyrað þegar maður skoðar efra línuritið:
         </p>
         <ul>
-          <li><b>Skeljungur</b> á Orkuna og OrkanX.</li>
-          <li><b>Olís</b> á ÓB.</li>
-          <li><b>N1</b> á Dæluna.</li>
+          <li><b>Skeljungur</b> rekur Orkuna og OrkanX.</li>
+          <li><b>Olís</b> rekur ÓB.</li>
+          <li><b>N1</b> rekur Dæluna.</li>
           <li><b>Atlantsolía</b> er sér á báti (svo best sem ég veit)</li>
         </ul>
         <p>

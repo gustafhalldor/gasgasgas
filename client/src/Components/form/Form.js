@@ -4,11 +4,14 @@ import NumberInputs from './numberInputs';
 import styles from './form.css';
 
 class Form extends Component {
-  componentDidMount() {
-    // default is 95 okt
+
+  constructor(props) {
+    super(props);
+
     this.state = ({
       typeOfGas: '95 oktan',
-      distance: 0
+      distance: 0,
+      showResultInfoText: false
     })
   }
 
@@ -30,9 +33,18 @@ class Form extends Component {
     }
 
     this.props.onSubmit(inputs);
+
+    this.setState({
+      showResultInfoText: true
+    })
   }
 
   render() {
+
+    let text = '';
+    if (this.state.showResultInfoText) {
+      text = 'Niðurstöður að neðan';
+    }
 
     return (
       <form onSubmit={this.submitForm.bind(this)} className={styles.flexcontainer}>
@@ -40,6 +52,7 @@ class Form extends Component {
         <NumberInputs distance={this.props.distance} duration={this.props.duration}/>
         <RadioInputs onRadioChange={this.handleRadioInputChange.bind(this)}/>
         <input type="submit" value="reikna" className={styles.input}/>
+        <span className={styles.slightlySmallerFont}>{text}</span>
       </form>
     )
   }
