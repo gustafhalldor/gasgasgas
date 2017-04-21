@@ -95,10 +95,6 @@ function scrapeGas(html, type95) {
 }
 
 function scrapeBrentOil(html) {
-  let file3 = './server/data/html.html';
-  jsonfile.writeFile(file3, html, (err) => {
-    //console.error(err)
-  });
   const $$ = cheerio.load(html);
   let oilObject = {};
   let file = './server/data/crudeOil.json';
